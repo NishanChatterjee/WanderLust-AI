@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: wanderlust-backend
+  threads:
+    virtual:
+      enabled: true
+
+  # Using Postgres for both Transactional Data and Vector Store (Required for pgvector)
+  # If you strictly want H2 for transactions, you need multi-datasource config.
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wanderlust
+    username: myuser
+    password: secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Docker Compose integration
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start-and-stop
+
+  # AI Configuration
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:sk-proj-dummy-key-change-me}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+
+  # Redis for Idempotency
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics

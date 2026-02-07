@@ -1,27 +1,21 @@
 # 🌍 WanderLust-AI: The Resilient Booking Orchestrator
 
-**A production-grade travel booking platform demonstrating advanced distributed systems patterns with AI-powered assistance**
-
-[Features](#-key-features) • [Architecture](#-architecture) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [API Reference](#-api-reference)
-
-</div>
-
----
+A production-grade travel booking platform demonstrating advanced distributed systems patterns with AI-powered assistance.
 
 ## 🎯 Project Overview
 
 WanderLust-AI is a **full-stack travel booking orchestrator** that showcases modern enterprise architecture patterns. It demonstrates how to build resilient, AI-powered microservices that can handle failures gracefully while providing an exceptional user experience.
 
-### 💡 Why This Project Stands Out
+### Why This Project Stands Out
 
-| Challenge                               | Solution Implemented                                    |
-| --------------------------------------- | ------------------------------------------------------- |
-| **Distributed Transaction Consistency** | Saga Pattern with compensating transactions             |
-| **Service Failures & Latency**          | Circuit Breaker (Resilience4j) with fallbacks           |
-| **Duplicate Request Handling**          | Idempotency Keys for exactly-once processing            |
-| **AI Integration**                      | Spring AI with Google Gemini for intelligent assistance |
-| **Real-time Updates**                   | Event-driven architecture with Spring Modulith          |
-| **External API Integration**            | Open-Meteo (weather) with resilient fallbacks           |
+| Challenge                           | Solution Implemented                                    |
+| ----------------------------------- | ------------------------------------------------------- |
+| Distributed Transaction Consistency | Saga Pattern with compensating transactions             |
+| Service Failures & Latency          | Circuit Breaker (Resilience4j) with fallbacks           |
+| Duplicate Request Handling          | Idempotency Keys for exactly-once processing            |
+| AI Integration                      | Spring AI with Google Gemini for intelligent assistance |
+| Real-time Updates                   | Event-driven architecture with Spring Modulith          |
+| External API Integration            | Open-Meteo (weather) with resilient fallbacks           |
 
 ---
 
@@ -29,7 +23,7 @@ WanderLust-AI is a **full-stack travel booking orchestrator** that showcases mod
 
 ### 🤖 AI-Powered Travel Assistant
 
-- Natural language trip planning using **Spring AI + Google Gemini**
+- Natural language trip planning using Spring AI + Google Gemini
 - Intelligent destination recommendations
 - Context-aware booking suggestions
 
@@ -51,18 +45,18 @@ WanderLust-AI is a **full-stack travel booking orchestrator** that showcases mod
 
 ### ⚡ Resilience Patterns
 
-| Pattern             | Implementation      | Purpose                   |
-| ------------------- | ------------------- | ------------------------- |
-| **Circuit Breaker** | WeatherService      | Prevents cascade failures |
-| **Fallback**        | Weather cached data | Graceful degradation      |
-| **Idempotency**     | Order processing    | Exactly-once semantics    |
-| **Timeout**         | All external calls  | Bounded latency           |
+| Pattern         | Implementation      | Purpose                   |
+| --------------- | ------------------- | ------------------------- |
+| Circuit Breaker | WeatherService      | Prevents cascade failures |
+| Fallback        | Weather cached data | Graceful degradation      |
+| Idempotency     | Order processing    | Exactly-once semantics    |
+| Timeout         | All external calls  | Bounded latency           |
 
 ### 📡 Event-Driven Architecture
 
-- **Domain Events**: `BookingConfirmedEvent`, `PaymentProcessedEvent`
-- **Spring Modulith**: Module boundaries with event publishing
-- **Notification System**: Real-time booking confirmations
+- Domain Events: `BookingConfirmedEvent`, `PaymentProcessedEvent`
+- Spring Modulith: Module boundaries with event publishing
+- Notification System: Real-time booking confirmations
 
 ---
 
@@ -72,7 +66,7 @@ WanderLust-AI is a **full-stack travel booking orchestrator** that showcases mod
 ┌─────────────────────────────────────────────────────────────────┐
 │                         FRONTEND (React)                         │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌────────────┐ │
-│  │ SearchHero  │ │ BookingCard │ │ WeatherWidget│ │ MyTripsPage│ │
+│  │ SearchHero  │ │ BookingCard │ │WeatherWidget│ │ MyTripsPage│ │
 │  └─────────────┘ └─────────────┘ └─────────────┘ └────────────┘ │
 └─────────────────────────────────────────────────────────────────┘
                               │ REST API
@@ -115,33 +109,33 @@ WanderLust-AI is a **full-stack travel booking orchestrator** that showcases mod
 
 ### Backend
 
-| Technology                | Purpose                              |
-| ------------------------- | ------------------------------------ |
-| **Spring Boot 3.4**       | Application framework                |
-| **Spring AI**             | AI/LLM integration (Google Gemini)   |
-| **Spring Modulith**       | Modular monolith architecture        |
-| **Resilience4j**          | Circuit breaker, retry, fallback     |
-| **Spring Data JPA**       | Data persistence                     |
-| **PostgreSQL + pgvector** | Database with vector support for RAG |
-| **Redis**                 | Caching & session management         |
-| **Zipkin**                | Distributed tracing                  |
+| Technology            | Purpose                              |
+| --------------------- | ------------------------------------ |
+| Spring Boot 3.4       | Application framework                |
+| Spring AI             | AI/LLM integration (Google Gemini)   |
+| Spring Modulith       | Modular monolith architecture        |
+| Resilience4j          | Circuit breaker, retry, fallback     |
+| Spring Data JPA       | Data persistence                     |
+| PostgreSQL + pgvector | Database with vector support for RAG |
+| Redis                 | Caching & session management         |
+| Zipkin                | Distributed tracing                  |
 
 ### Frontend
 
-| Technology        | Purpose      |
-| ----------------- | ------------ |
-| **React 18**      | UI framework |
-| **TypeScript**    | Type safety  |
-| **Framer Motion** | Animations   |
-| **Lucide React**  | Icons        |
-| **Vite**          | Build tool   |
+| Technology    | Purpose      |
+| ------------- | ------------ |
+| React 18      | UI framework |
+| TypeScript    | Type safety  |
+| Framer Motion | Animations   |
+| Lucide React  | Icons        |
+| Vite          | Build tool   |
 
 ### Infrastructure
 
-| Technology         | Purpose                           |
-| ------------------ | --------------------------------- |
-| **Docker Compose** | Container orchestration           |
-| **Open-Meteo API** | Live weather data (free, no auth) |
+| Technology     | Purpose                           |
+| -------------- | --------------------------------- |
+| Docker Compose | Container orchestration           |
+| Open-Meteo API | Live weather data (free, no auth) |
 
 ---
 
@@ -194,8 +188,11 @@ Find me the best trips to Bali for 2 travelers
 
 ```http
 GET /api/weather/{city}
+```
 
 Response:
+
+```json
 {
   "city": "Bali",
   "temperature": 28,
@@ -209,8 +206,11 @@ Response:
 
 ```http
 GET /api/flights/search?origin=DEL&destination=Bali&passengers=2
+```
 
 Response:
+
+```json
 [
   {
     "flightId": "uuid",
@@ -225,8 +225,11 @@ Response:
 
 ```http
 GET /api/hotels/search?destination=Bali&rooms=1&guests=2
+```
 
 Response:
+
+```json
 [
   {
     "hotelId": "uuid",
@@ -244,7 +247,11 @@ Response:
 POST /api/order/book
 Content-Type: application/json
 Idempotency-Key: {unique-key}
+```
 
+Request body:
+
+```json
 {
   "flightId": "uuid",
   "hotelId": "uuid",
@@ -262,8 +269,11 @@ Idempotency-Key: {unique-key}
 ```bash
 # Trigger circuit breaker (weather service)
 curl http://localhost:8080/api/weather/ErrorCity
+```
 
-# Response shows fallback data
+Response shows fallback data:
+
+```json
 {
   "circuitBreakerActive": true,
   "source": "Fallback (Service Unavailable)"
@@ -298,7 +308,7 @@ WanderLust-AI/
 │   │   └── HotelGateway.java
 │   ├── order/                 # Order orchestration
 │   │   ├── OrderController.java
-│   │   ├── OrderSaga.java     # Saga implementation
+│   │   ├── OrderSaga.java
 │   │   └── BookingConfirmedEvent.java
 │   ├── payment/               # Payment module
 │   │   ├── PaymentGateway.java
@@ -311,8 +321,8 @@ WanderLust-AI/
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── BookingCard.tsx    # Saga visualization
-│   │   │   ├── WeatherWidget.tsx  # Circuit breaker status
+│   │   │   ├── BookingCard.tsx
+│   │   │   ├── WeatherWidget.tsx
 │   │   │   └── NotificationToast.tsx
 │   │   └── pages/
 │   │       └── MyTripsPage.tsx
@@ -323,11 +333,7 @@ WanderLust-AI/
 
 ---
 
-## 🎓 Key Learning Points
-
-### For Interviewers
-
-This project demonstrates proficiency in:
+## 🎓 Key Concepts Demonstrated
 
 1. **Distributed Systems**
    - Saga pattern for distributed transactions
@@ -358,14 +364,8 @@ This project demonstrates proficiency in:
 
 ## 📄 License
 
-MIT License - feel free to use this project for learning and interviews!
+MIT License - feel free to use this project for learning!
 
 ---
 
-<div align="center">
-
 **Built with ❤️ using Spring AI + React**
-
-_Perfect for demonstrating distributed systems knowledge in technical interviews_
-
-</div>
